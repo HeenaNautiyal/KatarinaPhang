@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -63,10 +64,57 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 mail1=mail.getText().toString();
                 pass1=pass.getText().toString();
-                 if (mail1.matches(Expn) && mail1.length() > 0) {
+                if(TextUtils.isEmpty(pass1) || pass1.length() < 4)
+                {
+                    pass.requestFocus();
+                    pass.setError("You must have 6 characters in your password");
+                    return;
+                }
+                if (mail1.matches("") || pass1.matches("")) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
+                    TextView myMsg = new TextView(Login.this);
+                    myMsg.setText("Warning!");
+                    myMsg.setGravity(Gravity.CENTER_HORIZONTAL);
+                    myMsg.setTextSize(20);
+
+                    myMsg.setTextColor(Color.BLACK);
+                    builder.setCustomTitle(myMsg);
+                    builder.setMessage("All fields are mandatory.");
+                    builder.setPositiveButton("OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                    builder.show();
+                }
+                else {
+                    if (mail1.matches(Expn) && mail1.length() > 0) {
                         new Logmem().execute();
-                     session.createLoginSession(mail1.replaceAll(" ", ""), pass1.replaceAll(" ", ""));
-                     }
+                        session.createLoginSession(mail1.replaceAll(" ", ""), pass1.replaceAll(" ", ""));
+                    }
+                    else{
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
+                        TextView myMsg = new TextView(Login.this);
+                        myMsg.setText("Warning!");
+                        myMsg.setGravity(Gravity.CENTER_HORIZONTAL);
+                        myMsg.setTextSize(20);
+
+                        myMsg.setTextColor(Color.BLACK);
+                        builder.setCustomTitle(myMsg);
+                        builder.setMessage("Please enter a valid mail ID!");
+                        builder.setPositiveButton("OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+                        builder.show();
+                    }
+                }
             }
         });
 
@@ -120,7 +168,7 @@ public class Login extends AppCompatActivity {
                         myMsg.setTextColor(Color.BLACK);
                         builder.setCustomTitle(myMsg);
                         builder.setMessage("You have logged in successfully.");
-                        builder.setPositiveButton("Continue.",
+                        builder.setPositiveButton("Continue",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog,
                                                         int which) {
@@ -139,7 +187,7 @@ public class Login extends AppCompatActivity {
                     myMsg.setTextColor(Color.BLACK);
                     builder.setCustomTitle(myMsg);
                     builder.setMessage("Email/Password is invalid.");
-                    builder.setPositiveButton("OK.",
+                    builder.setPositiveButton("OK",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,
                                                     int which) {

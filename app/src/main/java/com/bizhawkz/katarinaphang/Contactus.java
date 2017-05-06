@@ -96,7 +96,7 @@ EditText mail,sub,message;
                     myMsg.setTextColor(Color.BLACK);
                     builder.setCustomTitle(myMsg);
                     builder.setMessage("Your Query has been send");
-                    builder.setPositiveButton("Continue.",
+                    builder.setPositiveButton("Continue",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,
                                                     int which) {

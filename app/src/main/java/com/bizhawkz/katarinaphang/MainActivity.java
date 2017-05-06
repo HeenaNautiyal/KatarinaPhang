@@ -36,15 +36,18 @@ public class MainActivity extends AppCompatActivity {
 
         webView.setWebViewClient(new MyWebViewClient());
 
-        String url = "http://katarinaphang.com/";
+        String url = "http://newsite.katarinaphang.com";
         webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-        //webView.getSettings().setJavaScriptEnabled(true);
+
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
-              /*  webView.loadUrl("javascript:document.getElementById(\"header\").setAttribute(\"style\",\"display:none;\");");
+                webView.loadUrl("javascript:document.getElementById(\"header\").setAttribute(\"style\",\"display:none;\");");
+                webView.loadUrl("javascript:document.getElementById('navi-wrap').setAttribute(\"style\",\"display:none;\");");
                 webView.loadUrl("javascript:(function() { " +
-                        "document.getElementsByClassName('mobile_nav closed')[0].style.display='none'; })()");*/
+                        "document.getElementsByClassName('app_img')[0].style.display='none'; })()");
+                webView.loadUrl("javascript:(function() { " +
+                        "document.getElementsByClassName('head-inner')[0].style.display='none'; })()");
                 pb.dismiss();
                 mySwipeRefreshLayout.setRefreshing(false);
             }
@@ -57,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 myMsg.setTextColor(Color.BLACK);
                 builder.setCustomTitle(myMsg);
                 builder.setMessage("Turn on mobile data or use Wi-Fi to access data.");
-                builder.setPositiveButton("ok",
+                builder.setPositiveButton("Ok",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,
                                                 int which) {

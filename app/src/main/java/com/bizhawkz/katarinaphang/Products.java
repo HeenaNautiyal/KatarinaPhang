@@ -72,7 +72,7 @@ public class Products extends AppCompatActivity {
                 myMsg.setTextColor(Color.BLACK);
                 builder.setCustomTitle(myMsg);
                 builder.setMessage("Turn on mobile data or use Wi-Fi to access data.");
-                builder.setPositiveButton("ok",
+                builder.setPositiveButton("Ok",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,
                                                 int which) {

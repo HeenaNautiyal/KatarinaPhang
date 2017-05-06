@@ -3,16 +3,19 @@ package com.bizhawkz.katarinaphang;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -28,6 +31,7 @@ public class Register extends AppCompatActivity {
     EditText ed_firstname, ed_lastname, ed_emailid, ed_password, ed_ageuser;
     String name, lstname, mail, password, age;
     Button btnRegi;
+    int aging;
     ProgressDialog pb;
     String Expn =
             "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
@@ -56,6 +60,12 @@ public class Register extends AppCompatActivity {
                 lstname = ed_lastname.getText().toString();
                 mail = ed_emailid.getText().toString();
                 password = ed_password.getText().toString();
+                if(TextUtils.isEmpty(password) || password.length() < 4)
+                {
+                    ed_password.requestFocus();
+                    ed_password.setError("You must have 6 characters in your password");
+                    return;
+                }
                 age = ed_ageuser.getText().toString();
                 if (name.matches("") || lstname.matches("") || mail.matches("") ||
                         password.matches("") || age.matches("")) {
@@ -67,7 +77,7 @@ public class Register extends AppCompatActivity {
 
                     myMsg.setTextColor(Color.BLACK);
                     builder.setCustomTitle(myMsg);
-                    builder.setMessage("All fields are mandatory.");
+                    builder.setMessage("All fields are mandatory");
                     builder.setPositiveButton("OK",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,
@@ -78,7 +88,13 @@ public class Register extends AppCompatActivity {
                     builder.show();
                 } else {
                     if (mail.matches(Expn) && mail.length() > 0) {
-                        new Registration().execute();
+                        aging=Integer.parseInt(age);
+                        if((aging>18)&&(aging<100)) {
+                            new Registration().execute();
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(),"You must be 18+ to register yourself",Toast.LENGTH_LONG).show();
+                        }
                                /* Intent it= new Intent(Register.this,OptionScreen.class);
                                 startActivity(it);*/
                     } else {
@@ -125,8 +141,7 @@ public class Register extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             HttpClient httpClient = new DefaultHttpClient();
 
-            String url1 = "http://outsourcingservicesusa.com/clients/katrina/insertdata.php?" +
-                    "caseid=1&fname="+name.replaceAll(" ", "")+"&lname="+lstname.replaceAll(" ", "") + "" +
+            String url1 ="http://outsourcingservicesusa.com/clients/katrina/insertdata.php?caseid=1&fname="+name.replaceAll(" ", "")+"&lname="+lstname.replaceAll(" ", "") + "" +
                     "&email="+ mail.replaceAll(" ", "") + "&password=" + password.replaceAll(" ", "") + "" +
                     "&age=" + age.replaceAll(" ", "") + "";
 
@@ -157,7 +172,7 @@ public class Register extends AppCompatActivity {
                     myMsg.setTextColor(Color.BLACK);
                     builder.setCustomTitle(myMsg);
                     builder.setMessage("You have Registered in successfully.");
-                    builder.setPositiveButton("OK.",
+                    builder.setPositiveButton("OK",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
@@ -167,7 +182,8 @@ public class Register extends AppCompatActivity {
                                     ed_emailid.setText("");
                                     ed_password.setText("");
                                     ed_ageuser.setText("");
-
+                                    Intent it= new Intent(Register.this,Login.class);
+                                    startActivity(it);
                                 }
                             });
                     builder.show();
@@ -180,7 +196,7 @@ public class Register extends AppCompatActivity {
                     myMsg.setTextColor(Color.BLACK);
                     builder.setCustomTitle(myMsg);
                     builder.setMessage("Email/Password is invalid.");
-                    builder.setPositiveButton("OK.",
+                    builder.setPositiveButton("OK",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,
                                                     int which) {

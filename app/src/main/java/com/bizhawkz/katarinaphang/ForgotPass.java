@@ -30,6 +30,13 @@ public class ForgotPass extends AppCompatActivity {
     Button btnsub;
     String forgot;
     ProgressDialog pb;
+    String Expn =
+            "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+                    + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                    + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                    + "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                    + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+                    + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +48,51 @@ public class ForgotPass extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 forgot=edforgot.getText().toString();
-                new Forgot().execute();
+                if (forgot.matches("")) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(ForgotPass.this);
+                    TextView myMsg = new TextView(ForgotPass.this);
+                    myMsg.setText("Warning!");
+                    myMsg.setGravity(Gravity.CENTER_HORIZONTAL);
+                    myMsg.setTextSize(20);
+
+                    myMsg.setTextColor(Color.BLACK);
+                    builder.setCustomTitle(myMsg);
+                    builder.setMessage("All fields are mandatory.");
+                    builder.setPositiveButton("OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                    builder.show();
+                }
+                else {
+                    if (forgot.matches(Expn) && forgot.length() > 0) {
+                        new Forgot().execute();
+                    }
+                    else{
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ForgotPass.this);
+                        TextView myMsg = new TextView(ForgotPass.this);
+                        myMsg.setText("Warning!");
+                        myMsg.setGravity(Gravity.CENTER_HORIZONTAL);
+                        myMsg.setTextSize(20);
+
+                        myMsg.setTextColor(Color.BLACK);
+                        builder.setCustomTitle(myMsg);
+                        builder.setMessage("Please enter a valid mail ID!");
+                        builder.setPositiveButton("OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+                        builder.show();
+                    }
+
+                }
             }
         });
     }
@@ -88,14 +139,13 @@ public class ForgotPass extends AppCompatActivity {
                     myMsg.setTextSize(20);
                     myMsg.setTextColor(Color.BLACK);
                     builder.setCustomTitle(myMsg);
-                    builder.setMessage("Your password has been sent to your registered id.");
-                    builder.setPositiveButton("Continue.",
+                    builder.setMessage("Your password has been sent to your registered mailid.");
+                    builder.setPositiveButton("Continue",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
                                     Intent it = new Intent(ForgotPass.this, Login.class);
                                     startActivity(it);
-
                                 }
                             });
                     builder.show();
@@ -108,12 +158,11 @@ public class ForgotPass extends AppCompatActivity {
                     myMsg.setTextColor(Color.BLACK);
                     builder.setCustomTitle(myMsg);
                     builder.setMessage("This email id is not registered with us");
-                    builder.setPositiveButton("OK.",
+                    builder.setPositiveButton("OK",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
-                                    dialog.dismiss();
-                                }
+                                    dialog.dismiss(); }
                             });
                     builder.show();
                 }
