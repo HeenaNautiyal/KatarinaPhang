@@ -17,7 +17,7 @@
         android:weightSum="1">
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="160dp"
             android:scaleType="fitXY"
             android:src="@drawable/banner2"/>
         </LinearLayout>
@@ -29,7 +29,8 @@
         android:layout_marginRight="4dp"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1.58">
+        android:layout_weight="2.74"
+        android:weightSum="1">
 
 <!--        FirstContent-->
         <LinearLayout
@@ -52,10 +53,10 @@
                     android:orientation="vertical"
                     android:layout_marginRight="2dp"
                     android:background="@drawable/img_1"
-                    android:layout_height="wrap_content">
+                    android:layout_height="100dp">
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         android:layout_marginTop="10dp"
                         android:id="@+id/home"
                         android:scaleType="center"
@@ -63,13 +64,13 @@
                         />
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:textColor="#ffffff"
                         android:textSize="20dp"
                         android:layout_marginTop="4dp"
                         android:textStyle="bold"
                         android:gravity="center"
-                        android:layout_marginBottom="6dp"
+                        android:layout_marginBottom="2dp"
                         android:text="About Katarina"/>
                 </LinearLayout>
 
@@ -89,11 +90,11 @@
                     android:orientation="vertical"
                     android:paddingRight="6dp"
                     android:background="@drawable/img_11"
-                    android:layout_height="wrap_content"
+                    android:layout_height="100dp"
                     android:layout_weight="1">
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         android:layout_marginTop="10dp"
                         android:id="@+id/Blog"
                         android:scaleType="center"
@@ -105,7 +106,7 @@
                         android:textColor="#ffffff"
                         android:textSize="20dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="2dp"
                         android:textStyle="bold"
                         android:gravity="center"
                         android:text="Blog"/>
@@ -121,8 +122,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-
             android:id="@+id/lay2"
+            android:layout_margin="1dp"
+            android:layout_marginTop="2dp"
             android:weightSum="2">
 
             <LinearLayout
@@ -138,10 +140,10 @@
                     android:layout_marginTop="2dp"
                     android:layout_marginRight="2dp"
                     android:background="@drawable/img_2"
-                    android:layout_height="match_parent">
+                    android:layout_height="105dp">
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         android:layout_marginTop="10dp"
                         android:id="@+id/product1"
                         android:scaleType="center"
@@ -149,9 +151,10 @@
                         />
                     <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:textColor="#ffffff"
                     android:textSize="20dp"
+                        android:layout_marginTop="4dp"
                     android:textStyle="bold"
                     android:gravity="center"
                     android:text="Product"/>
@@ -174,11 +177,11 @@
                     android:paddingRight="6dp"
                     android:background="@drawable/img_4"
                     android:layout_marginTop="2dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="105dp"
                     android:layout_weight="1">
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         android:layout_marginTop="10dp"
                         android:scaleType="center"
                         android:id="@+id/coaching"
@@ -190,7 +193,7 @@
                         android:textColor="#ffffff"
                         android:textSize="20dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="2dp"
                         android:textStyle="bold"
                         android:gravity="center"
                         android:text="Coaching"/>
@@ -207,9 +210,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="4dp"
             android:id="@+id/lay3"
-            android:weightSum="2">
+            android:weightSum="2"
+            android:layout_weight="0.35">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -226,7 +229,7 @@
                     android:layout_height="105dp">
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         android:scaleType="center"
                         android:layout_marginTop="10dp"
                         android:id="@+id/membership2"
@@ -259,12 +262,13 @@
                     android:paddingRight="6dp"
                     android:background="@drawable/img_6"
                     android:layout_marginTop="2dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="105dp">
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         android:layout_marginTop="10dp"
-                        android:scaleType="center"
+
+                        android:scaleType="fitCenter"
                         android:id="@+id/contact"
                         android:src="@drawable/con_icon"
                         />
@@ -274,7 +278,7 @@
                         android:textColor="#ffffff"
                         android:textSize="20dp"
                         android:layout_marginTop="4dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="2dp"
                         android:textStyle="bold"
                         android:gravity="center"
                         android:text="Contact Us"/>
@@ -293,10 +297,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:id="@+id/SocialNetwork"
-        android:layout_marginTop="6dp"
+
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/membershiplay"
-        android:weightSum=".38">
+        >
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -309,7 +313,7 @@
                 android:orientation="horizontal">
                 <ImageView
                     android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:id="@+id/iv_facebook"
                     android:src="@drawable/fb"/>
             </LinearLayout>
@@ -320,7 +324,7 @@
                 android:orientation="horizontal">
                 <ImageView
                     android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/google"
                     android:id="@+id/iv_google"/>
             </LinearLayout>
@@ -331,7 +335,7 @@
                 android:orientation="horizontal">
                 <ImageView
                     android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/pin"
                     android:id="@+id/iv_pin"/>
             </LinearLayout>
@@ -343,7 +347,7 @@
 
                 <ImageView
                     android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/tw"
                     android:id="@+id/iv_twitter"/>
             </LinearLayout>

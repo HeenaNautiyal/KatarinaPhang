@@ -32,6 +32,8 @@ public class Membership extends AppCompatActivity {
         pb = new ProgressDialog(Membership.this);
         pb.setMessage("Please wait while Loading...");
         pb.show();
+        pb.setCancelable(false);
+
 
         webView.setWebViewClient(new MyWebViewClient());
         String url = "http://newsite.katarinaphang.com/members/";

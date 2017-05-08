@@ -102,7 +102,7 @@ public class OptionScreen extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://twitter.com/intent/tweet?text=Member%20Login%20-%20http%3A%2F%2Fgo.shr.lc%2F2alCZlN%20via%20%40Shareaholic&source=&related=shareaholic"));
+                        Uri.parse("https://twitter.com/KatarinaPhang"));
                 startActivity(intent);
             }
         });

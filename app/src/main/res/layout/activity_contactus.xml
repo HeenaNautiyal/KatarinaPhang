@@ -112,7 +112,7 @@
                             android:layout_marginTop="4dip"
                             android:id="@+id/ed_message"
                             android:paddingTop="2dp"
-                            android:hint="Message*"
+                            android:hint="Type your message here:"
                             android:paddingBottom="4dp"
                             android:inputType="textMultiLine"
                             android:lines="4"

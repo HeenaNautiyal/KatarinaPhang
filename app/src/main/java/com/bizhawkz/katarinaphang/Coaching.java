@@ -48,7 +48,7 @@ public class Coaching extends AppCompatActivity {
         pb = new ProgressDialog(Coaching.this);
         pb.setMessage("Please wait while Loading...");
         pb.show();
-
+        pb.setCancelable(false);
 
         webView.setWebViewClient(new MyWebViewClient());
          url = "http://newsite.katarinaphang.com/coaching/";

@@ -74,6 +74,7 @@
                 android:layout_marginTop="20dp"
                 android:id="@+id/btn_Submit"
                 android:textColor="#ff0066"
+                android:layout_marginBottom="30dp"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:layout_alignParentBottom="true"

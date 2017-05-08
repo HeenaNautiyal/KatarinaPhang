@@ -61,6 +61,7 @@ EditText mail,sub,message;
             ed_mal=mail.getText().toString();
             ed_sub=sub.getText().toString();
             ed_message=message.getText().toString();
+            ed_message=ed_message.replaceAll("\n","%20");
         }
 
 
@@ -85,7 +86,7 @@ EditText mail,sub,message;
             try {
                 pb.dismiss();
                 JSONObject jsonResult = new JSONObject(result);
-                String message = jsonResult.getString("udata");
+                final String message = jsonResult.getString("udata");
                 Log.d("Response: ", "> " + message);
                 if (message.equals("1")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(Contactus.this);
@@ -95,11 +96,14 @@ EditText mail,sub,message;
                     myMsg.setTextSize(20);
                     myMsg.setTextColor(Color.BLACK);
                     builder.setCustomTitle(myMsg);
-                    builder.setMessage("Your Query has been send");
+                    builder.setMessage("Your message has been sent successfully.");
                     builder.setPositiveButton("Continue",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
+                                    mail.setText("");
+                                    sub.setText("");
+
                                     Intent it = new Intent(Contactus.this, OptionScreen.class);
                                     startActivity(it);
                                 }

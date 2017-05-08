@@ -34,6 +34,7 @@ public class Blog extends AppCompatActivity {
         pb = new ProgressDialog(Blog.this);
         pb.setMessage("Please wait while Loading...");
         pb.show();
+        pb.setCancelable(false);
 
         webView.setWebViewClient(new MyWebViewClient());
 
@@ -56,7 +57,7 @@ public class Blog extends AppCompatActivity {
                 webView.loadUrl("javascript:(function() { " +
                         "document.getElementsByClassName('app_img')[0].style.display='none'; })()");
                 pb.dismiss();
-                pb.dismiss();
+
                 mySwipeRefreshLayout.setRefreshing(false);
             }
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {

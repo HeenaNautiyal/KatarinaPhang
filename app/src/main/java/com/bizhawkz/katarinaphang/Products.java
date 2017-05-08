@@ -28,27 +28,13 @@ public class Products extends AppCompatActivity {
         setContentView(R.layout.activity_products);
         mySwipeRefreshLayout = (SwipeRefreshLayout)this.findViewById(R.id.swipeContainer);
         initToolBar();
-       // spinner = (Spinner) findViewById(R.id.spinner);
 
-       /* spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-        List<String> categories = new ArrayList<String>();
-        categories.add("Overview");
-        categories.add("Seven Reason Why Men Marry some women and dump others");
-        categories.add("The journey inward Audio");
-        categories.add("Four Components of Melting his heart Audio");
-        categories.add("He's Really that into you,he'sjust not Ready");
-
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(dataAdapter);*/
 
         webView = (WebView) findViewById(R.id.web1);
         pb = new ProgressDialog(Products.this);
         pb.setMessage("Please wait while Loading...");
         pb.show();
-
+        pb.setCancelable(false);
 
 
         webView.setWebViewClient(new MyWebViewClient());

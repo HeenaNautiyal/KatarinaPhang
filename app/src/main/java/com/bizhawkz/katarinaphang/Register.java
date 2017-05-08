@@ -128,7 +128,7 @@ public class Register extends AppCompatActivity {
 
             pb.setMessage("Please wait while Loading...");
             pb.show();
-
+            pb.setCancelable(false);
             name = ed_firstname.getText().toString();
             lstname = ed_lastname.getText().toString();
             mail = ed_emailid.getText().toString();
