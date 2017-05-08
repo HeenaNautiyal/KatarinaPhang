@@ -28,7 +28,7 @@ public class Blog extends AppCompatActivity {
         setContentView(R.layout.activity_blog);
         mySwipeRefreshLayout = (SwipeRefreshLayout)this.findViewById(R.id.swipeContainer);
         initToolBar();
-        String url = "http://katarinaphang.com/category/blog/";
+        String url = "http://newsite.katarinaphang.com/blog/";
 
         webView = (WebView) findViewById(R.id.web1);
         pb = new ProgressDialog(Blog.this);
@@ -52,7 +52,10 @@ public class Blog extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 webView.loadUrl("javascript:document.getElementById(\"header\").setAttribute(\"style\",\"display:none;\");");
-                webView.loadUrl("javascript:(function() { " +"document.getElementsByClassName('mobile_nav closed')[0].style.display='none'; })()");
+                webView.loadUrl("javascript:document.getElementById(\"navi-wrap\").setAttribute(\"style\",\"display:none;\");");
+                webView.loadUrl("javascript:(function() { " +
+                        "document.getElementsByClassName('app_img')[0].style.display='none'; })()");
+                pb.dismiss();
                 pb.dismiss();
                 mySwipeRefreshLayout.setRefreshing(false);
             }

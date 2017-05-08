@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
@@ -36,20 +35,18 @@ public class MainActivity extends AppCompatActivity {
 
         webView.setWebViewClient(new MyWebViewClient());
 
-        String url = "http://newsite.katarinaphang.com";
-        webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-
+        String url = "http://newsite.katarinaphang.com/about-katarina/";
+        webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
                 webView.loadUrl("javascript:document.getElementById(\"header\").setAttribute(\"style\",\"display:none;\");");
-                webView.loadUrl("javascript:document.getElementById('navi-wrap').setAttribute(\"style\",\"display:none;\");");
+                webView.loadUrl("javascript:document.getElementById(\"navi-wrap\").setAttribute(\"style\",\"display:none;\");");
                 webView.loadUrl("javascript:(function() { " +
                         "document.getElementsByClassName('app_img')[0].style.display='none'; })()");
-                webView.loadUrl("javascript:(function() { " +
-                        "document.getElementsByClassName('head-inner')[0].style.display='none'; })()");
                 pb.dismiss();
                 mySwipeRefreshLayout.setRefreshing(false);
+
             }
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(MainActivity.this);

@@ -34,14 +34,15 @@ public class Membership extends AppCompatActivity {
         pb.show();
 
         webView.setWebViewClient(new MyWebViewClient());
-        String url = "http://katarinaphang.com/members/";
+        String url = "http://newsite.katarinaphang.com/members/";
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
                 webView.loadUrl("javascript:document.getElementById(\"header\").setAttribute(\"style\",\"display:none;\");");
+                webView.loadUrl("javascript:document.getElementById(\"navi-wrap\").setAttribute(\"style\",\"display:none;\");");
                 webView.loadUrl("javascript:(function() { " +
-                        "document.getElementsByClassName('mobile_nav closed')[0].style.display='none'; })()");
+                        "document.getElementsByClassName('app_img')[0].style.display='none'; })()");
                 pb.dismiss();
                 mySwipeRefreshLayout.setRefreshing(false);
             }

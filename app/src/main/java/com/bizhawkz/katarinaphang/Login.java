@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -64,12 +63,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 mail1=mail.getText().toString();
                 pass1=pass.getText().toString();
-                if(TextUtils.isEmpty(pass1) || pass1.length() < 4)
-                {
-                    pass.requestFocus();
-                    pass.setError("You must have 6 characters in your password");
-                    return;
-                }
+
                 if (mail1.matches("") || pass1.matches("")) {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);

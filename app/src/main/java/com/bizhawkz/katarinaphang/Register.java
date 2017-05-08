@@ -143,7 +143,7 @@ public class Register extends AppCompatActivity {
 
             String url1 ="http://outsourcingservicesusa.com/clients/katrina/insertdata.php?caseid=1&fname="+name.replaceAll(" ", "")+"&lname="+lstname.replaceAll(" ", "") + "" +
                     "&email="+ mail.replaceAll(" ", "") + "&password=" + password.replaceAll(" ", "") + "" +
-                    "&age=" + age.replaceAll(" ", "") + "";
+                    "&age=" + age.replaceAll(" ", "") +"";
 
             String SetServerString = "";
             HttpGet httpget = new HttpGet(url1);
@@ -195,7 +195,7 @@ public class Register extends AppCompatActivity {
                     myMsg.setTextSize(20);
                     myMsg.setTextColor(Color.BLACK);
                     builder.setCustomTitle(myMsg);
-                    builder.setMessage("Email/Password is invalid.");
+                    builder.setMessage("Already Registered");
                     builder.setPositiveButton("OK",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,
